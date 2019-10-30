@@ -13,8 +13,8 @@ resources:
 jobs:
   - name: job-docker-build
     plan:
-      - get: resource-docker
-      - get: resource-pipeline
+      - get: ci-docker
+      - get: ci-pipeline
       - task: task-docker-build
         config:
           platform: linux
