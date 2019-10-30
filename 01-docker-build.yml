@@ -22,4 +22,4 @@ jobs:
             type: docker-image
             source: {repository: docker}           
           run:
-            path: ci-docker/01-docker-build.sh
+            path: ci-pipeline/01-docker-build.sh
