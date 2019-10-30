@@ -15,6 +15,7 @@ jobs:
   - name: job-docker-build
     plan:
       - get: resource-docker
+      - get: resource-pipeline
       - task: task-docker-build
         config:
           platform: linux
