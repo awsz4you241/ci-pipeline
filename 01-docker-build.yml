@@ -1,11 +1,11 @@
 ---
 resources:
-  - name: resource-docker
+  - name: ci-docker
     type: git
     source:
       uri: https://github.com/awsz4you241/ci-docker.git
       branch: master
-  - name: resource-pipeline
+  - name: ci-pipeline
     type: git
     source:
       uri: https://github.com/awsz4you241/ci-pipeline.git

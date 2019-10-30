@@ -3,7 +3,7 @@ sudo curl -L "https://github.com/docker/compose/releases/download/1.24.1/docker-
 
 sudo chmod +x /usr/local/bin/docker-compose
 
-cd resource-docker
+cd ci-docker
 docker-compose up -d --build
 
 docker-compose run test-service -T
