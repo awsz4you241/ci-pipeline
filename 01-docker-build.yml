@@ -9,9 +9,8 @@ resources:
   - name: resource-pipeline
     type: git
     source:
-      uri: https://github.com/awsz4you241/ci-docker.git
+      uri: https://github.com/awsz4you241/ci-pipeline.git
       branch: master
-
 jobs:
   - name: job-docker-build
     plan:
@@ -23,4 +22,4 @@ jobs:
             type: docker-image
             source: {repository: docker}           
           run:
-            path: 01-docker-build.sh
+            path: resource-pipeline/01-docker-build.sh
