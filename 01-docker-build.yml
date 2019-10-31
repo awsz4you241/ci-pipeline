@@ -16,10 +16,5 @@ jobs:
       - get: ci-docker
       - get: ci-pipeline
       - task: task-docker-build
-        config:
-          platform: linux
-          image_resource:
-            type: docker-image
-            source: {repository: docker}           
-          run:
-            path: ci-pipeline/01-docker-build.sh
+        privileged: true
+        file: ci-pipeline/01-task-docker-build.yml
