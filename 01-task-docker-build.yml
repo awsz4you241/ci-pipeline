@@ -8,7 +8,7 @@ inputs:
   - name: ci-pipeline
 run:
   path: sh
-  args:
+  args: 
   - -exc
   - |
   source /docker-lib.sh
