@@ -7,15 +7,15 @@ inputs:
   - name: ci-docker
   - name: ci-pipeline
 run:
-  path: sh
-  args: 
-  - -exc
-  - |
-  source /docker-lib.sh
-  start_docker
-  cd ci-docker
-  docker-compose up -d
-  docker-compose run test-service -T
-  rc=0
-  docker-compose down
-  exit 
+        path: sh
+        args:
+        - -exc
+        - |
+          source /docker-lib.sh               # required
+          start_docker                        # required
+          cd ci-docker
+          docker-compose up -d
+          docker-compose run test-service -T
+          rc=0                               # exit code of testservice
+          docker-compose down                 # required
+          exit 
