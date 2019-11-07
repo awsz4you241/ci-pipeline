@@ -7,9 +7,9 @@ inputs:
   - name: ci-docker
   - name: ci-pipeline
 run:
-	path: sh
-	args:
-		- -exc
-		- |
-			docker daemon &
-			exit 
+  path: sh
+  args:
+    - -exc
+    - |
+      docker daemon &
+      exit 
