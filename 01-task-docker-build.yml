@@ -2,19 +2,30 @@
 platform: linux
 image_resource:
   type: docker-image
-  source: {repository: docker, tag: dind}
+  source: {repository: amidos/dcind}
 inputs:
   - name: ci-docker
   - name: ci-pipeline
 run:
-        path: sh
+        path: bash
         args:
         - -exc
         - |
-          source ci-pipeline/setteing-cgroup.sh
-          sanitize_cgroups()
-          cd ci-docker/api-server
-          docker daemon &
-          docker build . -t api-server:latest
-          rc=0                               # exit code of testservice
-          exit 
+          source /docker-lib.sh
+          start_docker
+          cd ci-docker
+          docker-compose up -d
+          docker-compose run test-service -T
+          docker volume rm 0a1dfbb58ff5e1c2b14386e5f182d28073492e3a5d5e0a30ea544cc88445dc4a
+1d8bbfe8ab4b8af022cbff72a9e8693419cea3a41862eca847f519ad7a940c98
+5cf15d6c928b4788d143a9b51a1e9c6ca231a346b8b109513821a0226a323322
+6cf1b4254b8fe55726c2ade86e703bc5d34770f4ee6df710ca52058f2fe7c3b3
+8d455e6111816cfede1d6e59b69414d8fb8fbcddf4f9df2eaa089ef908854966
+9e451aaa7d32f8fc6a2db43f1f439357d307cb9b61af5bee58351b3c78251cc9
+599de7bc67c8d951b2b35916fc40f2ba42f376f846d7ff1ce268b5b1bc5cd1d8
+4897f8110ef91f62013f5791f88b749f99fda50fb3a04def561813cdd96efc01
+41933110a221a4f5a3f0dcc90f29f5bb3bdc865769fb577b847bd4e69c070b36
+ca7d6239752b99db0bb1c51a867ad4e190c5e27851e0c152e36733e3d191e165
+cdf7d88bb27f3439a179327ff188b06f08df799f1700f2c8e1bb39e8aa772a49
+d29759ee7aa2a53f7327f9b67322ab1cfb54c8719a36db300dbab662f977c445
+edd37c18ba953a89f321f5cef2fc0de4b1708bf985b6e6336c7653083afb10df
