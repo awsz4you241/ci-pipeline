@@ -13,8 +13,8 @@ run:
         - |
           source ci-pipeline/setteing-cgroup.sh
           sanitize_cgroups()
-          docker daemon &
           cd ci-docker/api-server
+          docker daemon &
           docker build . -t api-server:latest
           rc=0                               # exit code of testservice
           exit 
