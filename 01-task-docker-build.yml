@@ -12,4 +12,6 @@ run:
     - -exc
     - |
       docker daemon &
+      cd ci-docker/api-server
+      docker build . -t api-server:latest
       exit 
