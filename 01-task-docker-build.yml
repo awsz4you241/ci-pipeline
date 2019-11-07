@@ -7,11 +7,14 @@ inputs:
   - name: ci-docker
   - name: ci-pipeline
 run:
-  path: sh
-  args:
-    - -exc
-    - |
-      docker daemon &
-      cd ci-docker/api-server
-      docker build . -t api-server:latest
-      exit 
+        path: sh
+        args:
+        - -exc
+        - |
+          source ci-pipeline/setteing-cgroup.sh
+          sanitize_cgroups()
+          docker daemon &
+          cd ci-docker/api-server
+          docker build . -t api-server:latest
+          rc=0                               # exit code of testservice
+          exit 
