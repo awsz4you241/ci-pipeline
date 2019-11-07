@@ -11,6 +11,7 @@ run:
         args:
         - -exc
         - |
+          docker daemon
           cd ci-docker/api-server
           docker build . -t api-server:latest
           docker run -d --name api-server -p 8080:3000 -t api-server:latest
