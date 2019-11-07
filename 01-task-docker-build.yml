@@ -16,4 +16,5 @@ run:
     cd ci-docker
     docker-compose up -d
     docker-compose run test-service -T
+    docker-compose down
     docker volume rm $(docker volume ls -q)
