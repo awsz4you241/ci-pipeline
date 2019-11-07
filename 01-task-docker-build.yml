@@ -14,9 +14,8 @@ run:
     source /docker-lib.sh
     start_docker
     cd ci-docker
-    docker-compose up -d
+    docker-compose up -d --build
     docker-compose run test-service -T
     rc=0
     docker-compose down --rmi all
-    docker volume rm "$(docker volume ls -q)"
     exit 
