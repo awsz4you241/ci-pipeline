@@ -18,5 +18,5 @@ run:
     docker-compose run test-service -T
     rc=0
     docker-compose down --rmi all
-    exit 
     docker volume rm "$(docker volume ls -q)"
+    exit 
