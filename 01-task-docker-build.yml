@@ -8,12 +8,12 @@ inputs:
   - name: ci-pipeline
 run:
   path: sh
-  args:
+  args: 
   - -exc
   - |
-  source /docker-lib.sh
-  start_docker
-  cd ci-docker
-  docker-compose up -d
-  docker-compose run test-service -T
-  docker volume rm $(docker volume ls -q)
+    source /docker-lib.sh
+    start_docker
+    cd ci-docker
+    docker-compose up -d
+    docker-compose run test-service -T
+    docker volume rm $(docker volume ls -q)
