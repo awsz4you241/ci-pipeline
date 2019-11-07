@@ -1,8 +1,31 @@
 ---
 platform: linux
+mkdir -p ~/environment/day1/workout-05/ci-pipeline && cd cat
+cat << EOF > 01-task-docker-build.yml
+---
+platform: linux
 image_resource:
   type: docker-image
-  source: {repository: docker, tag: dind}
+  source: {repository: quay.io/cosee-concourse/dind, tag: latest}
+inputs:
+  - name: ci-docker
+  - name: ci-pipeline
+run:
+        path: sh
+        args:
+        - -exc
+        - |
+          source /docker-lib.sh               # required
+          start_docker                        # required
+          cd ci-docker/api-server
+          docker build . -t api-server:latest
+          docker run -d --name api-server -p 8080:3000 -t api-server:latest
+          docker api-server 
+          rc=0                               # exit code of testservice
+          exit 
+EOFimage_resource:
+  type: docker-image
+  source: {repository: quay.io/cosee-concourse/dind, tag: latest}
 inputs:
   - name: ci-docker
   - name: ci-pipeline
